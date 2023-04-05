@@ -14,12 +14,16 @@ def dojo():
 
 @app.route('/say/<name>')
 def hello(name):
-    return 'Hello, ' + name +'!'
+    return f'Hello {name.capitalize()}!'
 
 
 @app.route('/repeat/<int:num>/<string:name>')
 def multiply(num, name):
-    return name * num
+    output = ''
+
+    for i in range(0, num):
+        output += f'<p>{name}</p>'
+    return output
 
 @app.errorhandler(404)
 def page_not_found(error):
